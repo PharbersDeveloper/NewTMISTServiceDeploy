@@ -332,14 +332,14 @@ daemons:
   method: NewMongoDBDaemon
   args:
     # host: primary
-    host: 192.168.100.174
-    port: 27017
-    database: ddsaas-demo
+    host: 123.56.179.133
+    port: 5555
+    database: pharbers-ntm-client
 - name: BmRedisDaemon
   method: NewRedisDBDaemon
   args:
     # host: redis
-    host: 192.168.100.174
-    port: 6379
+    host: 123.56.179.133
+    port: 6378
     password:
     database: 0
