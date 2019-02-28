@@ -13,7 +13,9 @@ resources:
   - NtmImageStorage
 
 services:
-
+  - name: ntm-image
+    model: NtmImage
+    resource: NtmImageResource
 functions:
 
 
