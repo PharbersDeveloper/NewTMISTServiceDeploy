@@ -5,17 +5,29 @@ storages:
   method: NewImageStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmPolicyStorage
+  method: NewPolicyStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
   method: NewImageResource
   storages:
   - NtmImageStorage
+- name: NtmPolicyResource
+  method: NewPolicyResource
+  storages:
+    - NtmPolicyStorage
 
 services:
-  - name: ntm-image
-    model: NtmImage
-    resource: NtmImageResource
+- name: ntm-image
+  model: NtmImage
+  resource: NtmImageResource
+- name: ntm-policy
+  model: NtmPolicy
+  resource: NtmPolicyResource
+
 functions:
 
 
