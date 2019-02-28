@@ -14,6 +14,10 @@ storages:
   method: NewHospitalStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmProductStorage
+  method: NewProductStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -23,12 +27,17 @@ resources:
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
-    - NtmPolicyStorage
+  - NtmPolicyStorage
 - name: NtmHospitalResource
   method: NewHospitalResource
   storages:
-    - NtmHospitalStorage
-    - NtmImageStorage
+  - NtmHospitalStorage
+  - NtmImageStorage
+- name: NtmProductResource
+  method: NewProductResource
+  storages:
+  - NtmProductStorage
+  - NtmImageStorage
 
 services:
 - name: ntm-image
@@ -40,6 +49,9 @@ services:
 - name: ntm-hospital
   model: NtmHospital
   resource: NtmHospitalResource
+- name: ntm-product
+  model: NtmProduct
+  resource: NtmProductResource
 
 functions:
 
