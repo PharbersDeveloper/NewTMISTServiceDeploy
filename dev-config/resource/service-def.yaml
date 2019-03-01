@@ -1,5 +1,9 @@
 models:
+- NtmImage
+- NtmProduct
+- NtmPolicy
 - NtmHospital
+- NtmRepresentative
 
 storages:
 - name: NtmImageStorage
@@ -16,6 +20,10 @@ storages:
   - BmMongodbDaemon
 - name: NtmProductStorage
   method: NewProductStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeStorage
+  method: NewRepresentativeStorage
   daemons:
   - BmMongodbDaemon
 
@@ -38,6 +46,11 @@ resources:
   storages:
   - NtmProductStorage
   - NtmImageStorage
+- name: NtmRepresentativeResource
+  method: NewRepresentativeResource
+  storages:
+  - NtmRepresentativeStorage
+  - NtmImageStorage
 
 services:
 - name: ntm-image
@@ -52,6 +65,9 @@ services:
 - name: ntm-product
   model: NtmProduct
   resource: NtmProductResource
+- name: ntm-representative
+  model: NtmRepresentative
+  resource: NtmRepresentativeResource
 
 functions:
 
