@@ -4,6 +4,8 @@ models:
 - NtmPolicy
 - NtmHospital
 - NtmRepresentative
+- NtmManagerConfig
+- NtmRepresentativeonfig
 
 storages:
 - name: NtmImageStorage
@@ -24,6 +26,14 @@ storages:
   - BmMongodbDaemon
 - name: NtmRepresentativeStorage
   method: NewRepresentativeStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManagerConfigStorage
+  method: NewManagerConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeConfigStorage
+  method: NewRepresentativeConfigStorage
   daemons:
   - BmMongodbDaemon
 
@@ -51,6 +61,15 @@ resources:
   storages:
   - NtmRepresentativeStorage
   - NtmImageStorage
+- name: NtmManagerConfigResource
+  method: NewManagerConfigResource
+  storages:
+  - NtmManagerConfigStorage
+- name: NtmRepresentativeConfigResource
+  method: NewRepresentativeConfigResource
+  storages:
+  - NtmRepresentativeConfigStorage
+  - NtmRepresentativeStorage
 
 services:
 - name: ntm-image
@@ -68,6 +87,12 @@ services:
 - name: ntm-representative
   model: NtmRepresentative
   resource: NtmRepresentativeResource
+- name: ntm-managerConfig
+  model: NtmManagerConfig
+  resource: NtmManagerConfigResource
+- name: ntm-representativeConfig
+  model: NtmRepresentativeConfig
+  resource: NtmRepresentativeConfigResource
 
 functions:
 
