@@ -3,9 +3,13 @@ models:
 - NtmProduct
 - NtmPolicy
 - NtmHospital
+- NtmDepartment
+- NtmRegion
 - NtmRepresentative
 - NtmManagerConfig
-- NtmRepresentativeonfig
+- NtmRepresentativeConfig
+- NtmRegionConfig
+- NtmHospitalConfig
 
 storages:
 - name: NtmImageStorage
@@ -18,6 +22,14 @@ storages:
   - BmMongodbDaemon
 - name: NtmHospitalStorage
   method: NewHospitalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmDepartmentStorage
+  method: NewDepartmentStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRegionStorage
+  method: NewRegionStorage
   daemons:
   - BmMongodbDaemon
 - name: NtmProductStorage
@@ -36,6 +48,14 @@ storages:
   method: NewRepresentativeConfigStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmRegionConfigStorage
+  method: NewRegionConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmHospitalConfigStorage
+  method: NewHospitalConfigStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -50,6 +70,15 @@ resources:
   method: NewHospitalResource
   storages:
   - NtmHospitalStorage
+  - NtmImageStorage
+- name: NtmDepartmentResource
+  method: NewDepartmentResource
+  storages:
+  - NtmDepartmentStorage
+- name: NtmRegionResource
+  method: NewRegionResource
+  storages:
+  - NtmRegionStorage
   - NtmImageStorage
 - name: NtmProductResource
   method: NewProductResource
@@ -70,6 +99,18 @@ resources:
   storages:
   - NtmRepresentativeConfigStorage
   - NtmRepresentativeStorage
+- name: NtmRegionConfigResource
+  method: NewRegionConfigResource
+  storages:
+  - NtmRegionConfigStorage
+  - NtmRegionStorage
+- name: NtmHospitalConfigResource
+  method: NewHospitalConfigResource
+  storages:
+  - NtmHospitalConfigStorage
+  - NtmHospitalStorage
+  - NtmPolicyStorage
+  - NtmDepartmentStorage
 
 services:
 - name: ntm-image
@@ -81,6 +122,12 @@ services:
 - name: ntm-hospital
   model: NtmHospital
   resource: NtmHospitalResource
+- name: ntm-department
+  model: NtmDepartment
+  resource: NtmDepartmentResource
+- name: ntm-region
+  model: NtmRegion
+  resource: NtmRegionResource
 - name: ntm-product
   model: NtmProduct
   resource: NtmProductResource
@@ -93,6 +140,12 @@ services:
 - name: ntm-representativeConfig
   model: NtmRepresentativeConfig
   resource: NtmRepresentativeConfigResource
+- name: ntm-regionConfig
+  model: NtmRegionConfig
+  resource: NtmRegionConfigResource
+- name: ntm-hospitalConfig
+  model: NtmHospitalConfig
+  resource: NtmHospitalConfigResource
 
 functions:
 
