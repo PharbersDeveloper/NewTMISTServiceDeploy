@@ -13,6 +13,7 @@ models:
 - NtmProductConfig
 - NtmResourceConfig
 - NtmDestConfig
+- NtmScenario
 
 storages:
 - name: NtmImageStorage
@@ -69,6 +70,10 @@ storages:
   - BmMongodbDaemon
 - name: NtmDestConfigStorage
   method: NewDestConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmScenarioStorage
+  method: NewScenarioStorage
   daemons:
   - BmMongodbDaemon
 
@@ -154,6 +159,10 @@ resources:
   friendly:
   - NtmRegionConfigResource
   - NtmHospitalConfigResource
+- name: NtmScenarioResource
+  method: NewScenarioResource
+  storages:
+  - NtmScenarioStorage
 
 services:
 - name: ntm-image
@@ -198,6 +207,10 @@ services:
 - name: ntm-destConfig
   model: NtmDestConfig
   resource: NtmDestConfigResource
+- name: ntm-scenario
+  model: NtmScenario
+  resource: NtmScenarioResource
+
 
 functions:
 
