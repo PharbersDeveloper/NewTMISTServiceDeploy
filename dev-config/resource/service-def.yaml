@@ -110,7 +110,8 @@ resources:
   method: NewRepresentativeConfigResource
   storages:
   - NtmRepresentativeConfigStorage
-  - NtmRepresentativeStorage
+  friendly:
+  - NtmRepresentativeResource
 - name: NtmRegionConfigResource
   method: NewRegionConfigResource
   storages:
@@ -127,13 +128,15 @@ resources:
   method: NewProductConfigResource
   storages:
   - NtmProductConfigStorage
-  - NtmProductStorage
+  friendly:
+  - NtmProductResource
 - name: NtmResourceConfigResource
   method: NewResourceConfigResource
   storages:
   - NtmResourceConfigStorage
-  - NtmManagerConfigStorage
-  - NtmRepresentativeConfigStorage
+  friendly:
+  - NtmManagerConfigResource
+  - NtmRepresentativeConfigResource
 
 services:
 - name: ntm-image
