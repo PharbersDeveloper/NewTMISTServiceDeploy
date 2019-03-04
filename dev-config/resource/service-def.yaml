@@ -16,6 +16,11 @@ models:
 - NtmScenario
 - NtmProposal
 - NtmUseableProposal
+- NtmGoodsConfig
+- NtmBusinessInput
+- NtmRepresentativeInput
+- NtmManagerInput
+- NtmPaperInput
 
 storages:
 - name: NtmImageStorage
@@ -68,6 +73,26 @@ storages:
   - BmMongodbDaemon
 - name: NtmResourceConfigStorage
   method: NewResourceConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmGoodsConfigStorage
+  method: NewGoodsConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmBusinessInputStorage
+  method: NewBusinessInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeInputStorage
+  method: NewRepresentativeInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManagerInputStorage
+  method: NewManagerInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperInputStorage
+  method: NewPaperInputStorage
   daemons:
   - BmMongodbDaemon
 - name: NtmDestConfigStorage
@@ -125,14 +150,17 @@ resources:
   storages:
   - NtmRepresentativeStorage
   - NtmImageStorage
+  - NtmRepresentativeConfigStorage
 - name: NtmManagerConfigResource
   method: NewManagerConfigResource
   storages:
   - NtmManagerConfigStorage
+  - NtmResourceConfigStorage
 - name: NtmRepresentativeConfigResource
   method: NewRepresentativeConfigResource
   storages:
   - NtmRepresentativeConfigStorage
+  - NtmResourceConfigStorage
   friendly:
   - NtmRepresentativeResource
 - name: NtmRegionConfigResource
@@ -153,6 +181,7 @@ resources:
   method: NewProductConfigResource
   storages:
   - NtmProductConfigStorage
+  - NtmGoodsConfigStorage
   friendly:
   - NtmProductResource
 - name: NtmResourceConfigResource
@@ -162,6 +191,34 @@ resources:
   friendly:
   - NtmManagerConfigResource
   - NtmRepresentativeConfigResource
+- name: NtmGoodsConfigResource
+  method: NewGoodsConfigResource
+  storages:
+  - NtmGoodsConfigStorage
+  friendly:
+  - NtmProductConfigResource
+- name: NtmBusinessInputResource
+  method: NewBusinessInputResource
+  storages:
+  - NtmBusinessInputStorage
+  - NtmPaperInputStorage
+- name: NtmRepresentativeInputResource
+  method: NewRepresentativeInputResource
+  storages:
+  - NtmRepresentativeInputStorage
+  - NtmPaperInputStorage
+- name: NtmManagerInputResource
+  method: NewManagerInputResource
+  storages:
+  - NtmManagerInputStorage
+  - NtmPaperInputStorage
+- name: NtmPaperInputResource
+  method: NewPaperInputResource
+  storages:
+  - NtmPaperInputStorage
+  - NtmBusinessInputStorage
+  - NtmRepresentativeInputStorage
+  - NtmManagerInputStorage
 - name: NtmDestConfigResource
   method: NewDestConfigResource
   storages:
@@ -224,6 +281,21 @@ services:
 - name: ntm-resourceConfig
   model: NtmResourceConfig
   resource: NtmResourceConfigResource
+- name: ntm-goodsConfig
+  model: NtmGoodsConfig
+  resource: NtmGoodsConfigResource
+- name: ntm-businessInput
+  model: NtmBusinessInput
+  resource: NtmBusinessInputResource
+- name: ntm-representativeInput
+  model: NtmRepresentativeInput
+  resource: NtmRepresentativeInputResource
+- name: ntm-managerInput
+  model: NtmManagerInput
+  resource: NtmManagerInputResource
+- name: ntm-paperInput
+  model: NtmPaperInput
+  resource: NtmPaperInputResource
 - name: ntm-destConfig
   model: NtmDestConfig
   resource: NtmDestConfigResource
