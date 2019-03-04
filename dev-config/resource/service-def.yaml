@@ -73,6 +73,10 @@ resources:
   storages:
   - NtmImageStorage
   - NtmProductStorage
+  - NtmHospitalStorage
+  - NtmRegionStorage
+  - NtmRepresentativeStorage
+
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
