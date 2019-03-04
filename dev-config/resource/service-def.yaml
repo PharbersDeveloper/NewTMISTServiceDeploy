@@ -12,6 +12,7 @@ models:
 - NtmHospitalConfig
 - NtmProductConfig
 - NtmResourceConfig
+- NtmDestConfig
 
 storages:
 - name: NtmImageStorage
@@ -66,6 +67,10 @@ storages:
   method: NewResourceConfigStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmDestConfigStorage
+  method: NewDestConfigStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -76,7 +81,6 @@ resources:
   - NtmHospitalStorage
   - NtmRegionStorage
   - NtmRepresentativeStorage
-
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
@@ -120,14 +124,16 @@ resources:
   method: NewRegionConfigResource
   storages:
   - NtmRegionConfigStorage
-  - NtmRegionStorage
+  friendly:
+  - NtmRegionResource
 - name: NtmHospitalConfigResource
   method: NewHospitalConfigResource
   storages:
   - NtmHospitalConfigStorage
-  - NtmHospitalStorage
-  - NtmPolicyStorage
-  - NtmDepartmentStorage
+  friendly:
+  - NtmHospitalResource
+  - NtmPolicyResource
+  - NtmDepartmentResource
 - name: NtmProductConfigResource
   method: NewProductConfigResource
   storages:
@@ -141,6 +147,13 @@ resources:
   friendly:
   - NtmManagerConfigResource
   - NtmRepresentativeConfigResource
+- name: NtmDestConfigResource
+  method: NewDestConfigResource
+  storages:
+  - NtmDestConfigStorage
+  friendly:
+  - NtmRegionConfigResource
+  - NtmHospitalConfigResource
 
 services:
 - name: ntm-image
@@ -182,6 +195,9 @@ services:
 - name: ntm-resourceConfig
   model: NtmResourceConfig
   resource: NtmResourceConfigResource
+- name: ntm-destConfig
+  model: NtmDestConfig
+  resource: NtmDestConfigResource
 
 functions:
 
