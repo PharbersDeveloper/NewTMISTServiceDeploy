@@ -14,6 +14,8 @@ models:
 - NtmResourceConfig
 - NtmDestConfig
 - NtmScenario
+- NtmProposal
+- NtmUseableProposal
 
 storages:
 - name: NtmImageStorage
@@ -74,6 +76,14 @@ storages:
   - BmMongodbDaemon
 - name: NtmScenarioStorage
   method: NewScenarioStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProposalStorage
+  method: NewProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmUseableProposalStorage
+  method: NewUseableProposalStorage
   daemons:
   - BmMongodbDaemon
 
@@ -163,6 +173,16 @@ resources:
   method: NewScenarioResource
   storages:
   - NtmScenarioStorage
+- name: NtmProposalResource
+  method: NewProposalResource
+  storages:
+  - NtmProposalStorage
+- name: NtmUseableProposalResource
+  method: NewUseableProposalResource
+  storages:
+  - NtmUseableProposalStorage
+  friendly:
+  - NtmProposalResource
 
 services:
 - name: ntm-image
@@ -210,6 +230,12 @@ services:
 - name: ntm-scenario
   model: NtmScenario
   resource: NtmScenarioResource
+- name: ntm-proposal
+  model: NtmProposal
+  resource: NtmProposalResource
+- name: ntm-useable-proposal
+  model: NtmUseableProposal
+  resource: NtmUseableProposalResource
 
 
 functions:
