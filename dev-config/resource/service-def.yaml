@@ -12,6 +12,10 @@ models:
 - NtmHospitalConfig
 - NtmProductConfig
 - NtmResourceConfig
+- NtmDestConfig
+- NtmScenario
+- NtmProposal
+- NtmUseableProposal
 
 storages:
 - name: NtmImageStorage
@@ -66,6 +70,22 @@ storages:
   method: NewResourceConfigStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmDestConfigStorage
+  method: NewDestConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmScenarioStorage
+  method: NewScenarioStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProposalStorage
+  method: NewProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmUseableProposalStorage
+  method: NewUseableProposalStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -76,7 +96,6 @@ resources:
   - NtmHospitalStorage
   - NtmRegionStorage
   - NtmRepresentativeStorage
-
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
@@ -120,14 +139,16 @@ resources:
   method: NewRegionConfigResource
   storages:
   - NtmRegionConfigStorage
-  - NtmRegionStorage
+  friendly:
+  - NtmRegionResource
 - name: NtmHospitalConfigResource
   method: NewHospitalConfigResource
   storages:
   - NtmHospitalConfigStorage
-  - NtmHospitalStorage
-  - NtmPolicyStorage
-  - NtmDepartmentStorage
+  friendly:
+  - NtmHospitalResource
+  - NtmPolicyResource
+  - NtmDepartmentResource
 - name: NtmProductConfigResource
   method: NewProductConfigResource
   storages:
@@ -141,6 +162,27 @@ resources:
   friendly:
   - NtmManagerConfigResource
   - NtmRepresentativeConfigResource
+- name: NtmDestConfigResource
+  method: NewDestConfigResource
+  storages:
+  - NtmDestConfigStorage
+  friendly:
+  - NtmRegionConfigResource
+  - NtmHospitalConfigResource
+- name: NtmScenarioResource
+  method: NewScenarioResource
+  storages:
+  - NtmScenarioStorage
+- name: NtmProposalResource
+  method: NewProposalResource
+  storages:
+  - NtmProposalStorage
+- name: NtmUseableProposalResource
+  method: NewUseableProposalResource
+  storages:
+  - NtmUseableProposalStorage
+  friendly:
+  - NtmProposalResource
 
 services:
 - name: ntm-image
@@ -182,6 +224,19 @@ services:
 - name: ntm-resourceConfig
   model: NtmResourceConfig
   resource: NtmResourceConfigResource
+- name: ntm-destConfig
+  model: NtmDestConfig
+  resource: NtmDestConfigResource
+- name: ntm-scenario
+  model: NtmScenario
+  resource: NtmScenarioResource
+- name: ntm-proposal
+  model: NtmProposal
+  resource: NtmProposalResource
+- name: ntm-useable-proposal
+  model: NtmUseableProposal
+  resource: NtmUseableProposalResource
+
 
 functions:
 
