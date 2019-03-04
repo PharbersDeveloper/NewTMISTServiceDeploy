@@ -10,6 +10,8 @@ models:
 - NtmRepresentativeConfig
 - NtmRegionConfig
 - NtmHospitalConfig
+- NtmProductConfig
+- NtmResourceConfig
 
 storages:
 - name: NtmImageStorage
@@ -56,12 +58,21 @@ storages:
   method: NewHospitalConfigStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmProductConfigStorage
+  method: NewProductConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmResourceConfigStorage
+  method: NewResourceConfigStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
   method: NewImageResource
   storages:
   - NtmImageStorage
+  - NtmProductStorage
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
@@ -85,6 +96,7 @@ resources:
   storages:
   - NtmProductStorage
   - NtmImageStorage
+  - NtmProductConfigStorage
 - name: NtmRepresentativeResource
   method: NewRepresentativeResource
   storages:
@@ -111,6 +123,17 @@ resources:
   - NtmHospitalStorage
   - NtmPolicyStorage
   - NtmDepartmentStorage
+- name: NtmProductConfigResource
+  method: NewProductConfigResource
+  storages:
+  - NtmProductConfigStorage
+  - NtmProductStorage
+- name: NtmResourceConfigResource
+  method: NewResourceConfigResource
+  storages:
+  - NtmResourceConfigStorage
+  - NtmManagerConfigStorage
+  - NtmRepresentativeConfigStorage
 
 services:
 - name: ntm-image
@@ -146,6 +169,12 @@ services:
 - name: ntm-hospitalConfig
   model: NtmHospitalConfig
   resource: NtmHospitalConfigResource
+- name: ntm-productConfig
+  model: NtmProductConfig
+  resource: NtmProductConfigResource
+- name: ntm-resourceConfig
+  model: NtmResourceConfig
+  resource: NtmResourceConfigResource
 
 functions:
 
