@@ -325,9 +325,33 @@ services:
 
 
 functions:
+- name: NtmAccountHandler
+  create: NewAccountHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  method: AccountValidation
+  http: POST
+  args:
+  - name
+- name: NtmGetUseableProposalsHandler
+  create: NewGetUseableProposalsHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  method: GetUseableProposals
+  http: POST
+  args:
+  - name
 
 
 middlewares:
+- name: NtmCheckTokenMiddleware
+  create: NewCheckTokenMiddleware
+  daemons:
+  - BmRedisDaemon
+  args:
+  - name
 
 
 panic:
