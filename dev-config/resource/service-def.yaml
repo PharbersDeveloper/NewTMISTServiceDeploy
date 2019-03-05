@@ -21,6 +21,7 @@ models:
 - NtmRepresentativeInput
 - NtmManagerInput
 - NtmPaperInput
+- NtmPaper
 
 storages:
 - name: NtmImageStorage
@@ -109,6 +110,10 @@ storages:
   - BmMongodbDaemon
 - name: NtmUseableProposalStorage
   method: NewUseableProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperStorage
+  method: NewPaperStorage
   daemons:
   - BmMongodbDaemon
 
@@ -240,6 +245,12 @@ resources:
   - NtmUseableProposalStorage
   friendly:
   - NtmProposalResource
+- name: NtmPaperResource
+  method: NewPaperResource
+  storages:
+  - NtmPaperStorage
+  friendly:
+  - NtmPaperInputResource
 
 services:
 - name: ntm-image
@@ -308,6 +319,9 @@ services:
 - name: ntm-useable-proposal
   model: NtmUseableProposal
   resource: NtmUseableProposalResource
+- name: ntm-paper
+  model: NtmPaper
+  resource: NtmPaperResource
 
 
 functions:
