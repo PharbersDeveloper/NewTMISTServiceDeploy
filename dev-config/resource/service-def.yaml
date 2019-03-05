@@ -342,7 +342,7 @@ functions:
   method: GetUseableProposals
   http: POST
   args:
-  - name
+  - useableProposals
 
 
 middlewares:
