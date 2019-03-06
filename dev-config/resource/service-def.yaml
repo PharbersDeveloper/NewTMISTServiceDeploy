@@ -130,15 +130,18 @@ resources:
   method: NewPolicyResource
   storages:
   - NtmPolicyStorage
+  - NtmHospitalConfigStorage
 - name: NtmHospitalResource
   method: NewHospitalResource
   storages:
   - NtmHospitalStorage
   - NtmImageStorage
+  - NtmHospitalConfigStorage
 - name: NtmDepartmentResource
   method: NewDepartmentResource
   storages:
   - NtmDepartmentStorage
+  - NtmHospitalConfigStorage
 - name: NtmRegionResource
   method: NewRegionResource
   storages:
@@ -172,16 +175,16 @@ resources:
   method: NewRegionConfigResource
   storages:
   - NtmRegionConfigStorage
-  friendly:
-  - NtmRegionResource
+  - NtmRegionStorage
+  - NtmDestConfigStorage
 - name: NtmHospitalConfigResource
   method: NewHospitalConfigResource
   storages:
   - NtmHospitalConfigStorage
-  friendly:
-  - NtmHospitalResource
-  - NtmPolicyResource
-  - NtmDepartmentResource
+  - NtmHospitalStorage
+  - NtmPolicyStorage
+  - NtmDepartmentStorage
+  - NtmDestConfigStorage
 - name: NtmProductConfigResource
   method: NewProductConfigResource
   storages:
@@ -228,9 +231,8 @@ resources:
   method: NewDestConfigResource
   storages:
   - NtmDestConfigStorage
-  friendly:
-  - NtmRegionConfigResource
-  - NtmHospitalConfigResource
+  - NtmRegionConfigStorage
+  - NtmHospitalConfigStorage
 - name: NtmScenarioResource
   method: NewScenarioResource
   storages:
@@ -355,12 +357,12 @@ functions:
 
 
 middlewares:
-- name: NtmCheckTokenMiddleware
-  create: NewCheckTokenMiddleware
-  daemons:
-  - BmRedisDaemon
-  args:
-  - name
+#- name: NtmCheckTokenMiddleware
+#  create: NewCheckTokenMiddleware
+#  daemons:
+#  - BmRedisDaemon
+#  args:
+#  - name
 
 
 panic:
