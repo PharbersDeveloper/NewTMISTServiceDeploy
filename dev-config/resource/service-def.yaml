@@ -130,15 +130,18 @@ resources:
   method: NewPolicyResource
   storages:
   - NtmPolicyStorage
+  - NtmHospitalConfigStorage
 - name: NtmHospitalResource
   method: NewHospitalResource
   storages:
   - NtmHospitalStorage
   - NtmImageStorage
+  - NtmHospitalConfigStorage
 - name: NtmDepartmentResource
   method: NewDepartmentResource
   storages:
   - NtmDepartmentStorage
+  - NtmHospitalConfigStorage
 - name: NtmRegionResource
   method: NewRegionResource
   storages:
@@ -171,16 +174,16 @@ resources:
   method: NewRegionConfigResource
   storages:
   - NtmRegionConfigStorage
-  friendly:
-  - NtmRegionResource
+  - NtmRegionStorage
+  - NtmDestConfigStorage
 - name: NtmHospitalConfigResource
   method: NewHospitalConfigResource
   storages:
   - NtmHospitalConfigStorage
-  friendly:
-  - NtmHospitalResource
-  - NtmPolicyResource
-  - NtmDepartmentResource
+  - NtmHospitalStorage
+  - NtmPolicyStorage
+  - NtmDepartmentStorage
+  - NtmDestConfigStorage
 - name: NtmProductConfigResource
   method: NewProductConfigResource
   storages:
@@ -220,13 +223,13 @@ resources:
   - NtmBusinessInputStorage
   - NtmRepresentativeInputStorage
   - NtmManagerInputStorage
+  - NtmPaperStorage
 - name: NtmDestConfigResource
   method: NewDestConfigResource
   storages:
   - NtmDestConfigStorage
-  friendly:
-  - NtmRegionConfigResource
-  - NtmHospitalConfigResource
+  - NtmRegionConfigStorage
+  - NtmHospitalConfigStorage
 - name: NtmScenarioResource
   method: NewScenarioResource
   storages:
@@ -244,8 +247,7 @@ resources:
   method: NewPaperResource
   storages:
   - NtmPaperStorage
-  friendly:
-  - NtmPaperInputResource
+  - NtmPaperInputStorage
 
 services:
 - name: ntm-image
