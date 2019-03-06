@@ -169,8 +169,7 @@ resources:
   storages:
   - NtmRepresentativeConfigStorage
   - NtmResourceConfigStorage
-  friendly:
-  - NtmRepresentativeResource
+  - NtmRepresentativeStorage
 - name: NtmRegionConfigResource
   method: NewRegionConfigResource
   storages:
@@ -190,21 +189,18 @@ resources:
   storages:
   - NtmProductConfigStorage
   - NtmGoodsConfigStorage
-  friendly:
-  - NtmProductResource
+  - NtmProductStorage
 - name: NtmResourceConfigResource
   method: NewResourceConfigResource
   storages:
   - NtmResourceConfigStorage
-  friendly:
-  - NtmManagerConfigResource
-  - NtmRepresentativeConfigResource
+  - NtmManagerConfigStorage
+  - NtmRepresentativeConfigStorage
 - name: NtmGoodsConfigResource
   method: NewGoodsConfigResource
   storages:
   - NtmGoodsConfigStorage
-  friendly:
-  - NtmProductConfigResource
+  - NtmProductConfigStorage
 - name: NtmBusinessInputResource
   method: NewBusinessInputResource
   storages:
@@ -245,8 +241,7 @@ resources:
   method: NewUseableProposalResource
   storages:
   - NtmUseableProposalStorage
-  friendly:
-  - NtmProposalResource
+  - NtmProposalStorage
 - name: NtmPaperResource
   method: NewPaperResource
   storages:
