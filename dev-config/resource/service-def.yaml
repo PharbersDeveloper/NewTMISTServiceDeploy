@@ -343,6 +343,15 @@ functions:
   http: POST
   args:
   - useableProposals
+- name: NtmGeneratePaperHandler
+  create: NewGeneratePaperHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  method: GeneratePaper
+  http: POST
+  args:
+  - papers
 
 
 middlewares:
