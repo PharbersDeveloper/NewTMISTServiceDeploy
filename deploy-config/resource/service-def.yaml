@@ -147,6 +147,7 @@ resources:
   storages:
   - NtmRegionStorage
   - NtmImageStorage
+  - NtmRegionConfigStorage
 - name: NtmProductResource
   method: NewProductResource
   storages:
