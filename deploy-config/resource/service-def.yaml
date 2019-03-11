@@ -1,298 +1,328 @@
+models:
+- NtmImage
+- NtmProduct
+- NtmPolicy
+- NtmHospital
+- NtmDepartment
+- NtmRegion
+- NtmRepresentative
+- NtmManagerConfig
+- NtmRepresentativeConfig
+- NtmRegionConfig
+- NtmHospitalConfig
+- NtmProductConfig
+- NtmResourceConfig
+- NtmDestConfig
+- NtmScenario
+- NtmProposal
+- NtmUseableProposal
+- NtmGoodsConfig
+- NtmBusinessInput
+- NtmRepresentativeInput
+- NtmManagerInput
+- NtmPaperInput
+- NtmPaper
+
 storages:
-- name: BmApplicantStorage
-  method: NewApplicantStorage
-  daemons:
-  - BmMongodbDaemon
-- name: BmKidStorage
-  method: NewKidStorage
-  daemons:
-  - BmMongodbDaemon
-- name: BmApplyStorage
-  method: NewApplyStorage
-  daemons:
-  - BmMongodbDaemon
-- name: BmCategoryStorage
-  method: NewCategoryStorage
-  daemons:
-  - BmMongodbDaemon
-- name: BmCatenodeStorage
-  method: NewCatenodeStorage
-  daemons:
-  - BmMongodbDaemon
-- name: BmImageStorage
+- name: NtmImageStorage
   method: NewImageStorage
   daemons:
   - BmMongodbDaemon
-- name: BmSessioninfoStorage
-  method: NewSessioninfoStorage
+- name: NtmPolicyStorage
+  method: NewPolicyStorage
   daemons:
   - BmMongodbDaemon
-- name: BmReservableitemStorage
-  method: NewReservableitemStorage
+- name: NtmHospitalStorage
+  method: NewHospitalStorage
   daemons:
   - BmMongodbDaemon
-- name: BmBrandStorage
-  method: NewBrandStorage
+- name: NtmDepartmentStorage
+  method: NewDepartmentStorage
   daemons:
   - BmMongodbDaemon
-- name: BmStudentStorage
-  method: NewStudentStorage
+- name: NtmRegionStorage
+  method: NewRegionStorage
   daemons:
   - BmMongodbDaemon
-- name: BmGuardianStorage
-  method: NewGuardianStorage
+- name: NtmProductStorage
+  method: NewProductStorage
   daemons:
   - BmMongodbDaemon
-- name: BmTeacherStorage
-  method: NewTeacherStorage
+- name: NtmRepresentativeStorage
+  method: NewRepresentativeStorage
   daemons:
   - BmMongodbDaemon
-- name: BmRoomStorage
-  method: NewRoomStorage
+- name: NtmManagerConfigStorage
+  method: NewManagerConfigStorage
   daemons:
   - BmMongodbDaemon
-- name: BmYardStorage
-  method: NewYardStorage
+- name: NtmRepresentativeConfigStorage
+  method: NewRepresentativeConfigStorage
   daemons:
   - BmMongodbDaemon
-- name: BmClassStorage
-  method: NewClassStorage
+- name: NtmRegionConfigStorage
+  method: NewRegionConfigStorage
   daemons:
   - BmMongodbDaemon
-- name: BmUnitStorage
-  method: NewUnitStorage
+- name: NtmHospitalConfigStorage
+  method: NewHospitalConfigStorage
   daemons:
   - BmMongodbDaemon
-- name: BmDutyStorage
-  method: NewDutyStorage
+- name: NtmProductConfigStorage
+  method: NewProductConfigStorage
   daemons:
   - BmMongodbDaemon
-- name: BmBindReservableClassStorage
-  method: NewBindReservableClassStorage
+- name: NtmResourceConfigStorage
+  method: NewResourceConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmGoodsConfigStorage
+  method: NewGoodsConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmBusinessInputStorage
+  method: NewBusinessInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeInputStorage
+  method: NewRepresentativeInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManagerInputStorage
+  method: NewManagerInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperInputStorage
+  method: NewPaperInputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmDestConfigStorage
+  method: NewDestConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmScenarioStorage
+  method: NewScenarioStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProposalStorage
+  method: NewProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmUseableProposalStorage
+  method: NewUseableProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperStorage
+  method: NewPaperStorage
   daemons:
   - BmMongodbDaemon
 
 resources:
-- name: BmSessioninfoResource
-  method: NewSessioninfoResource
-  storages:
-  - BmSessioninfoStorage
-  - BmCategoryStorage
-  - BmImageStorage
-  - BmReservableitemStorage
-- name: BmReservableitemResource
-  method: NewReservableitemResource
-  storages:
-  - BmReservableitemStorage
-  - BmSessioninfoStorage
-  - BmClassStorage
-- name: BmImageResource
+- name: NtmImageResource
   method: NewImageResource
   storages:
-  - BmImageStorage
-  - BmSessioninfoStorage
-  - BmBrandStorage
-  - BmYardStorage
-- name: BmCategoryResource
-  method: NewCategoryResource
+  - NtmImageStorage
+  - NtmProductStorage
+  - NtmHospitalStorage
+  - NtmRegionStorage
+  - NtmRepresentativeStorage
+- name: NtmPolicyResource
+  method: NewPolicyResource
   storages:
-  - BmCategoryStorage
-  - BmSessioninfoStorage
-  - BmBrandStorage
-- name: BmCatenodeResource
-  method: NewCatenodeResource
+  - NtmPolicyStorage
+  - NtmHospitalConfigStorage
+- name: NtmHospitalResource
+  method: NewHospitalResource
   storages:
-  - BmCatenodeStorage
-- name: BmApplyResource
-  method: NewApplyResource
+  - NtmHospitalStorage
+  - NtmImageStorage
+  - NtmHospitalConfigStorage
+- name: NtmDepartmentResource
+  method: NewDepartmentResource
   storages:
-  - BmKidStorage
-  - BmApplyStorage
-  - BmApplicantStorage
-- name: BmKidResource
-  method: NewKidResource
+  - NtmDepartmentStorage
+  - NtmHospitalConfigStorage
+- name: NtmRegionResource
+  method: NewRegionResource
   storages:
-  - BmKidStorage
-  - BmApplyStorage
-- name: BmApplicantResource
-  method: NewApplicantResource
+  - NtmRegionStorage
+  - NtmImageStorage
+- name: NtmProductResource
+  method: NewProductResource
   storages:
-  - BmApplicantStorage
-  - BmApplyStorage
-- name: BmBrandResource
-  method: NewBrandResource
+  - NtmProductStorage
+  - NtmImageStorage
+  - NtmProductConfigStorage
+- name: NtmRepresentativeResource
+  method: NewRepresentativeResource
   storages:
-  - BmBrandStorage
-  - BmCategoryStorage
-  - BmImageStorage
-- name: BmStudentResource
-  method: NewStudentResource
+  - NtmRepresentativeStorage
+  - NtmImageStorage
+  - NtmRepresentativeConfigStorage
+- name: NtmManagerConfigResource
+  method: NewManagerConfigResource
   storages:
-  - BmStudentStorage
-  - BmKidStorage
-  - BmGuardianStorage
-  - BmTeacherStorage
-  - BmClassStorage
-- name: BmGuardianResource
-  method: NewGuardianResource
+  - NtmManagerConfigStorage
+  - NtmResourceConfigStorage
+- name: NtmRepresentativeConfigResource
+  method: NewRepresentativeConfigResource
   storages:
-  - BmGuardianStorage
-  - BmStudentStorage
-- name: BmTeacherResource
-  method: NewTeacherResource
+  - NtmRepresentativeConfigStorage
+  - NtmResourceConfigStorage
+  - NtmRepresentativeStorage
+- name: NtmRegionConfigResource
+  method: NewRegionConfigResource
   storages:
-  - BmTeacherStorage
-- name: BmRoomResource
-  method: NewRoomResource
+  - NtmRegionConfigStorage
+  - NtmRegionStorage
+  - NtmDestConfigStorage
+- name: NtmHospitalConfigResource
+  method: NewHospitalConfigResource
   storages:
-  - BmRoomStorage
-  - BmYardStorage
-- name: BmYardResource
-  method: NewYardResource
+  - NtmHospitalConfigStorage
+  - NtmHospitalStorage
+  - NtmPolicyStorage
+  - NtmDepartmentStorage
+  - NtmDestConfigStorage
+- name: NtmProductConfigResource
+  method: NewProductConfigResource
   storages:
-  - BmYardStorage
-  - BmImageStorage
-  - BmRoomStorage
-- name: BmClassResource
-  method: NewClassResource
+  - NtmProductConfigStorage
+  - NtmGoodsConfigStorage
+  - NtmProductStorage
+- name: NtmResourceConfigResource
+  method: NewResourceConfigResource
   storages:
-  - BmClassStorage
-  - BmSessioninfoStorage
-  - BmReservableitemStorage
-  - BmYardStorage
-  - BmStudentStorage
-  - BmDutyStorage
-  - BmUnitStorage
-  friendly:
-  - BmReservableitemResource
-- name: BmUnitResource
-  method: NewUnitResource
+  - NtmResourceConfigStorage
+  - NtmManagerConfigStorage
+  - NtmRepresentativeConfigStorage
+- name: NtmGoodsConfigResource
+  method: NewGoodsConfigResource
   storages:
-  - BmUnitStorage
-  - BmTeacherStorage
-  - BmClassStorage
-  - BmRoomStorage
-  friendly:
-  - BmClassResource
-- name: BmDutyResource
-  method: NewDutyResource
+  - NtmGoodsConfigStorage
+  - NtmProductConfigStorage
+- name: NtmBusinessInputResource
+  method: NewBusinessInputResource
   storages:
-  - BmDutyStorage
-  - BmTeacherStorage
-- name: BmBindReservableClassResource
-  method: NewBindReservableClassResource
+  - NtmBusinessInputStorage
+  - NtmPaperInputStorage
+- name: NtmRepresentativeInputResource
+  method: NewRepresentativeInputResource
   storages:
-  - BmBindReservableClassStorage
-
-models:
-- BmKid
-- BmApply
-- BmApplicant
-- BmSessioninfo
-- BmReservableitem
-- BmCategory
-- BmCatenode
-- BmBrand
-- BmStudent
-- BmGuardian
-- BmTeacher
-- BmRoom
-- BmYard
-- BmClass
-- BmUnit
-- BmDuty
-- BmBindReservableClass
+  - NtmRepresentativeInputStorage
+  - NtmPaperInputStorage
+- name: NtmManagerInputResource
+  method: NewManagerInputResource
+  storages:
+  - NtmManagerInputStorage
+  - NtmPaperInputStorage
+- name: NtmPaperInputResource
+  method: NewPaperInputResource
+  storages:
+  - NtmPaperInputStorage
+  - NtmBusinessInputStorage
+  - NtmRepresentativeInputStorage
+  - NtmManagerInputStorage
+  - NtmPaperStorage
+- name: NtmDestConfigResource
+  method: NewDestConfigResource
+  storages:
+  - NtmDestConfigStorage
+  - NtmRegionConfigStorage
+  - NtmHospitalConfigStorage
+- name: NtmScenarioResource
+  method: NewScenarioResource
+  storages:
+  - NtmScenarioStorage
+- name: NtmProposalResource
+  method: NewProposalResource
+  storages:
+  - NtmProposalStorage
+- name: NtmUseableProposalResource
+  method: NewUseableProposalResource
+  storages:
+  - NtmUseableProposalStorage
+  - NtmProposalStorage
+- name: NtmPaperResource
+  method: NewPaperResource
+  storages:
+  - NtmPaperStorage
+  - NtmPaperInputStorage
 
 services:
-- name: bm-kid
-  model: BmKid
-  resource: BmKidResource
-- name: bm-applicant
-  model: BmApplicant
-  resource: BmApplicantResource
-- name: bm-apply
-  model: BmApply
-  resource: BmApplyResource
-- name: bm-sessioninfo
-  model: BmSessioninfo
-  resource: BmSessioninfoResource
-- name: bm-reservable-item
-  model: BmReservableitem
-  resource: BmReservableitemResource
-- name: bm-category
-  model: BmCategory
-  resource: BmCategoryResource
-- name: bm-catenode
-  model: BmCatenode
-  resource: BmCatenodeResource
-- name: bm-image
-  model: BmImage
-  resource: BmImageResource
-- name: bm-brand
-  model: BmBrand
-  resource: BmBrandResource
-- name: bm-student
-  model: BmStudent
-  resource: BmStudentResource
-- name: bm-guardian
-  model: BmGuardian
-  resource: BmGuardianResource
-- name: bm-teacher
-  model: BmTeacher
-  resource: BmTeacherResource
-- name: bm-room
-  model: BmRoom
-  resource: BmRoomResource
-- name: bm-yard
-  model: BmYard
-  resource: BmYardResource
-- name: bm-class
-  model: BmClass
-  resource: BmClassResource
-- name: bm-unit
-  model: BmUnit
-  resource: BmUnitResource
-- name: bm-duty
-  model: BmDuty
-  resource: BmDutyResource
-- name: bm-bind-reservable-class
-  model: BmBindReservableClass
-  resource: BmBindReservableClassResource
+- name: ntm-image
+  model: NtmImage
+  resource: NtmImageResource
+- name: ntm-policy
+  model: NtmPolicy
+  resource: NtmPolicyResource
+- name: ntm-hospital
+  model: NtmHospital
+  resource: NtmHospitalResource
+- name: ntm-department
+  model: NtmDepartment
+  resource: NtmDepartmentResource
+- name: ntm-region
+  model: NtmRegion
+  resource: NtmRegionResource
+- name: ntm-product
+  model: NtmProduct
+  resource: NtmProductResource
+- name: ntm-representative
+  model: NtmRepresentative
+  resource: NtmRepresentativeResource
+- name: ntm-managerConfig
+  model: NtmManagerConfig
+  resource: NtmManagerConfigResource
+- name: ntm-representativeConfig
+  model: NtmRepresentativeConfig
+  resource: NtmRepresentativeConfigResource
+- name: ntm-regionConfig
+  model: NtmRegionConfig
+  resource: NtmRegionConfigResource
+- name: ntm-hospitalConfig
+  model: NtmHospitalConfig
+  resource: NtmHospitalConfigResource
+- name: ntm-productConfig
+  model: NtmProductConfig
+  resource: NtmProductConfigResource
+- name: ntm-resourceConfig
+  model: NtmResourceConfig
+  resource: NtmResourceConfigResource
+- name: ntm-goodsConfig
+  model: NtmGoodsConfig
+  resource: NtmGoodsConfigResource
+- name: ntm-businessInput
+  model: NtmBusinessInput
+  resource: NtmBusinessInputResource
+- name: ntm-representativeInput
+  model: NtmRepresentativeInput
+  resource: NtmRepresentativeInputResource
+- name: ntm-managerInput
+  model: NtmManagerInput
+  resource: NtmManagerInputResource
+- name: ntm-paperInput
+  model: NtmPaperInput
+  resource: NtmPaperInputResource
+- name: ntm-destConfig
+  model: NtmDestConfig
+  resource: NtmDestConfigResource
+- name: ntm-scenario
+  model: NtmScenario
+  resource: NtmScenarioResource
+- name: ntm-proposal
+  model: NtmProposal
+  resource: NtmProposalResource
+- name: ntm-useable-proposal
+  model: NtmUseableProposal
+  resource: NtmUseableProposalResource
+- name: ntm-paper
+  model: NtmPaper
+  resource: NtmPaperResource
+
 
 functions:
-- name: BmProvinceHandler
-  create: NewProvinceHandler
-  daemons:
-  - BmMongodbDaemon
-  method: AllProvinces
-  http: GET
-  args:
-  - name
-- name: BmCityHandler
-  create: NewCityHandler
-  daemons:
-  - BmMongodbDaemon
-  method: AllCities
-  http: GET
-  args:
-  - name
-- name: BmDistrictHandler
-  create: NewDistrictHandler
-  daemons:
-  - BmMongodbDaemon
-  method: AllDistricts
-  http: GET
-  args:
-  - name
-- name: BmUploadToOssHandler
-  create: NewUploadToOssHandler
-  daemons:
-  - BmMongodbDaemon
-  method: UploadToOss
-  http: POST
-  args:
-  - name
-- name: BmAccountHandler
+- name: NtmAccountHandler
   create: NewAccountHandler
   daemons:
   - BmMongodbDaemon
@@ -301,45 +331,52 @@ functions:
   http: POST
   args:
   - name
-- name: BmApplicantHandler
-  create: NewApplicantHandler
+- name: NtmGetUseableProposalsHandler
+  create: NewGetUseableProposalsHandler
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  method: ApplicantValidation
+  method: GetUseableProposals
   http: POST
   args:
-  - name
-- name: BmWeChatHandler
-  create: NewWeChatHandler
+  - useableProposals
+- name: NtmGeneratePaperHandler
+  create: NewGeneratePaperHandler
   daemons:
   - BmMongodbDaemon
-  method: GetWeChatInfo
+  - BmRedisDaemon
+  method: GeneratePaper
   http: POST
   args:
-  - name
+  - papers
+
 
 middlewares:
-- name: BmCheckTokenMiddleware
-  create: NewCheckTokenMiddleware
-  daemons:
-  - BmRedisDaemon
-  args:
-  - name
+#- name: NtmCheckTokenMiddleware
+#  create: NewCheckTokenMiddleware
+#  daemons:
+#  - BmRedisDaemon
+#  args:
+#  - name
+
+
+panic:
+  name: NtmCommonPanicHandle
+  create: NewCommonPanicHandle
 
 daemons:
 - name: BmMongodbDaemon
   method: NewMongoDBDaemon
   args:
     # host: primary
-    host: 192.168.100.174
-    port: 27017
-    database: ddsaas-demo
+    host: 123.56.179.133
+    port: 5555
+    database: pharbers-ntm-client
 - name: BmRedisDaemon
   method: NewRedisDBDaemon
   args:
     # host: redis
-    host: 192.168.100.174
-    port: 6379
+    host: 123.56.179.133
+    port: 6378
     password:
     database: 0
