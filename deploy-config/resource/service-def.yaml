@@ -372,6 +372,8 @@ daemons:
     # host: primary
     host: 123.56.179.133
     port: 5555
+    # host: 127.0.0.1
+    # port: 27017
     database: pharbers-ntm-client
 - name: BmRedisDaemon
   method: NewRedisDBDaemon
