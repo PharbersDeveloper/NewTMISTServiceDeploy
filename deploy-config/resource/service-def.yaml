@@ -350,15 +350,66 @@ functions:
   http: POST
   args:
   - papers
+- name: NtmUserAgentHandler
+  create: NewUserAgentHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: GenerateUserAgent
+  http: GET
+  args:
+  - name
+- name: NtmAuthUserAgentHandler
+  create: NewUserAgentHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: AuthUserAgent
+  http: GET
+  args:
+  - static/Auth.html
+- name: AuthHandler
+  create: NewAuthHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: GenerateAccessToken
+  http: GET
+  args:
+  - name
+- name: PasswordAuthHandler
+  create: NewAuthHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: PasswordLogin
+  http: POST
+  args:
+  - name
+
+- name: RefreshTokenHandler
+  create: NewRefreshTokenHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: RefreshAccessToken
+  http: GET
+  args:
+  - name
 
 
 middlewares:
-#- name: NtmCheckTokenMiddleware
-#  create: NewCheckTokenMiddleware
-#  daemons:
-#  - BmRedisDaemon
-#  args:
-#  - name
+- name: NtmCheckTokenMiddleware
+  create: NewCheckTokenMiddleware
+  daemons:
+  - BmRedisDaemon
+  args:
+  - name
 
 
 panic:
@@ -369,17 +420,20 @@ daemons:
 - name: BmMongodbDaemon
   method: NewMongoDBDaemon
   args:
-    # host: primary
     host: 123.56.179.133
     port: 5555
-    # host: 127.0.0.1
-    # port: 27017
+#    host: 127.0.0.1
+#    port: 27017
     database: pharbers-ntm-client
 - name: BmRedisDaemon
   method: NewRedisDBDaemon
   args:
-    # host: redis
     host: 123.56.179.133
     port: 6378
     password:
     database: 0
+- name: AuthClientDaemon
+  method: NewAuthClientDaemon
+  args:
+    auth_url: http://123.56.179.133:90/v0/Authorize
+    token_url: http://123.56.179.133:90/v0/Token
