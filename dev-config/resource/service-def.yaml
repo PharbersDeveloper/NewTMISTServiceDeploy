@@ -239,6 +239,7 @@ resources:
   method: NewProposalResource
   storages:
   - NtmProposalStorage
+  - NtmUseableProposalStorage
 - name: NtmUseableProposalResource
   method: NewUseableProposalResource
   storages:
@@ -323,15 +324,6 @@ services:
 
 
 functions:
-- name: NtmAccountHandler
-  create: NewAccountHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: AccountValidation
-  http: POST
-  args:
-  - name
 - name: NtmGetUseableProposalsHandler
   create: NewGetUseableProposalsHandler
   daemons:
@@ -409,7 +401,7 @@ middlewares:
   daemons:
   - BmRedisDaemon
   args:
-  - name
+  - 123.56.179.133:90
 
 
 panic:
