@@ -22,100 +22,105 @@ models:
   - NtmManagerinput
   - NtmPaperinput
   - NtmPaper
+  - NtmSalesConfig
 
 storages:
-  - name: NtmImageStorage
-    method: NewImageStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmPolicyStorage
-    method: NewPolicyStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmHospitalStorage
-    method: NewHospitalStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmDepartmentStorage
-    method: NewDepartmentStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmRegionStorage
-    method: NewRegionStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmProductStorage
-    method: NewProductStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmRepresentativeStorage
-    method: NewRepresentativeStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmManagerConfigStorage
-    method: NewManagerConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmRepresentativeConfigStorage
-    method: NewRepresentativeConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmRegionConfigStorage
-    method: NewRegionConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmHospitalConfigStorage
-    method: NewHospitalConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmProductConfigStorage
-    method: NewProductConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmResourceConfigStorage
-    method: NewResourceConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmGoodsConfigStorage
-    method: NewGoodsConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmBusinessinputStorage
-    method: NewBusinessinputStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmRepresentativeinputStorage
-    method: NewRepresentativeinputStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmManagerinputStorage
-    method: NewManagerinputStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmPaperinputStorage
-    method: NewPaperinputStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmDestConfigStorage
-    method: NewDestConfigStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmScenarioStorage
-    method: NewScenarioStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmProposalStorage
-    method: NewProposalStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmUseableProposalStorage
-    method: NewUseableProposalStorage
-    daemons:
-      - BmMongodbDaemon
-  - name: NtmPaperStorage
-    method: NewPaperStorage
-    daemons:
-      - BmMongodbDaemon
+- name: NtmImageStorage
+  method: NewImageStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPolicyStorage
+  method: NewPolicyStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmHospitalStorage
+  method: NewHospitalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmDepartmentStorage
+  method: NewDepartmentStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRegionStorage
+  method: NewRegionStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProductStorage
+  method: NewProductStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeStorage
+  method: NewRepresentativeStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManagerConfigStorage
+  method: NewManagerConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeConfigStorage
+  method: NewRepresentativeConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRegionConfigStorage
+  method: NewRegionConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmHospitalConfigStorage
+  method: NewHospitalConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProductConfigStorage
+  method: NewProductConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmResourceConfigStorage
+  method: NewResourceConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmGoodsConfigStorage
+  method: NewGoodsConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmBusinessinputStorage
+  method: NewBusinessinputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeinputStorage
+  method: NewRepresentativeinputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManagerinputStorage
+  method: NewManagerinputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperinputStorage
+  method: NewPaperinputStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmDestConfigStorage
+  method: NewDestConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmScenarioStorage
+  method: NewScenarioStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmProposalStorage
+  method: NewProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmUseableProposalStorage
+  method: NewUseableProposalStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmPaperStorage
+  method: NewPaperStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmSalesConfigStorage
+  method: NewSalesConfigStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -250,78 +255,84 @@ resources:
   storages:
   - NtmPaperStorage
   - NtmPaperinputStorage
+- name: NtmSalesConfigResource
+  method: NewSalesConfigResource
+  storages:
+  - NtmSalesConfigStorage
 
 services:
-  - name: ntm-image
-    model: NtmImage
-    resource: NtmImageResource
-  - name: ntm-policy
-    model: NtmPolicy
-    resource: NtmPolicyResource
-  - name: ntm-hospital
-    model: NtmHospital
-    resource: NtmHospitalResource
-  - name: ntm-department
-    model: NtmDepartment
-    resource: NtmDepartmentResource
-  - name: ntm-region
-    model: NtmRegion
-    resource: NtmRegionResource
-  - name: ntm-product
-    model: NtmProduct
-    resource: NtmProductResource
-  - name: ntm-representative
-    model: NtmRepresentative
-    resource: NtmRepresentativeResource
-  - name: ntm-managerConfig
-    model: NtmManagerConfig
-    resource: NtmManagerConfigResource
-  - name: ntm-representativeConfig
-    model: NtmRepresentativeConfig
-    resource: NtmRepresentativeConfigResource
-  - name: ntm-regionConfig
-    model: NtmRegionConfig
-    resource: NtmRegionConfigResource
-  - name: ntm-hospitalConfig
-    model: NtmHospitalConfig
-    resource: NtmHospitalConfigResource
-  - name: ntm-productConfig
-    model: NtmProductConfig
-    resource: NtmProductConfigResource
-  - name: ntm-resourceConfig
-    model: NtmResourceConfig
-    resource: NtmResourceConfigResource
-  - name: ntm-goodsConfig
-    model: NtmGoodsConfig
-    resource: NtmGoodsConfigResource
-  - name: ntm-Businessinput
-    model: NtmBusinessinput
-    resource: NtmBusinessinputResource
-  - name: ntm-Representativeinput
-    model: NtmRepresentativeinput
-    resource: NtmRepresentativeinputResource
-  - name: ntm-Managerinput
-    model: NtmManagerinput
-    resource: NtmManagerinputResource
-  - name: ntm-Paperinput
-    model: NtmPaperinput
-    resource: NtmPaperinputResource
-  - name: ntm-destConfig
-    model: NtmDestConfig
-    resource: NtmDestConfigResource
-  - name: ntm-scenario
-    model: NtmScenario
-    resource: NtmScenarioResource
-  - name: ntm-proposal
-    model: NtmProposal
-    resource: NtmProposalResource
-  - name: ntm-useable-proposal
-    model: NtmUseableProposal
-    resource: NtmUseableProposalResource
-  - name: ntm-paper
-    model: NtmPaper
-    resource: NtmPaperResource
-
+- name: ntm-image
+  model: NtmImage
+  resource: NtmImageResource
+- name: ntm-policy
+  model: NtmPolicy
+  resource: NtmPolicyResource
+- name: ntm-hospital
+  model: NtmHospital
+  resource: NtmHospitalResource
+- name: ntm-department
+  model: NtmDepartment
+  resource: NtmDepartmentResource
+- name: ntm-region
+  model: NtmRegion
+  resource: NtmRegionResource
+- name: ntm-product
+  model: NtmProduct
+  resource: NtmProductResource
+- name: ntm-representative
+  model: NtmRepresentative
+  resource: NtmRepresentativeResource
+- name: ntm-managerConfig
+  model: NtmManagerConfig
+  resource: NtmManagerConfigResource
+- name: ntm-representativeConfig
+  model: NtmRepresentativeConfig
+  resource: NtmRepresentativeConfigResource
+- name: ntm-regionConfig
+  model: NtmRegionConfig
+  resource: NtmRegionConfigResource
+- name: ntm-hospitalConfig
+  model: NtmHospitalConfig
+  resource: NtmHospitalConfigResource
+- name: ntm-productConfig
+  model: NtmProductConfig
+  resource: NtmProductConfigResource
+- name: ntm-resourceConfig
+  model: NtmResourceConfig
+  resource: NtmResourceConfigResource
+- name: ntm-goodsConfig
+  model: NtmGoodsConfig
+  resource: NtmGoodsConfigResource
+- name: ntm-Businessinput
+  model: NtmBusinessinput
+  resource: NtmBusinessinputResource
+- name: ntm-Representativeinput
+  model: NtmRepresentativeinput
+  resource: NtmRepresentativeinputResource
+- name: ntm-Managerinput
+  model: NtmManagerinput
+  resource: NtmManagerinputResource
+- name: ntm-Paperinput
+  model: NtmPaperinput
+  resource: NtmPaperinputResource
+- name: ntm-destConfig
+  model: NtmDestConfig
+  resource: NtmDestConfigResource
+- name: ntm-scenario
+  model: NtmScenario
+  resource: NtmScenarioResource
+- name: ntm-proposal
+  model: NtmProposal
+  resource: NtmProposalResource
+- name: ntm-useable-proposal
+  model: NtmUseableProposal
+  resource: NtmUseableProposalResource
+- name: ntm-paper
+  model: NtmPaper
+  resource: NtmPaperResource
+- name: ntm-sales-config
+  model: NtmSalesConfig
+  resource: NtmSalesConfigResource
 
 functions:
 - name: NtmGetUseableProposalsHandler
@@ -390,7 +401,6 @@ middlewares:
   - BmRedisDaemon
   args:
   - 123.56.179.133:90
-
 
 panic:
   name: NtmCommonPanicHandle
