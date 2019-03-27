@@ -415,5 +415,5 @@ daemons:
   - name: AuthClientDaemon
     method: NewAuthClientDaemon
     args:
-      auth_url: http://localhost:9096/v0/Authorize
-      token_url: http://localhost:9096/v0/Token
+      auth_url: http://123.56.179.133:90/v0/Authorize
+      token_url: http://123.56.179.133:90/v0/Token
