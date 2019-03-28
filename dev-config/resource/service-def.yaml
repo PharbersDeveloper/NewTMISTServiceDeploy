@@ -393,6 +393,16 @@ functions:
   http: POST
   args:
   - name
+- name: NtmCallRHandler
+  create: NewCallRHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  method: CallRCalculate
+  http: POST
+  args:
+  - localhost:8001
+  - stp_handler
 
 middlewares:
 - name: NtmCheckTokenMiddleware
