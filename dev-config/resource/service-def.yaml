@@ -23,6 +23,10 @@ models:
   - NtmPaperinput
   - NtmPaper
   - NtmSalesConfig
+  - NtmSalesReport
+  - NtmHospitalSalesReport
+  - NtmProductSalesReport
+  - NtmRepresentativeSalesReport
 
 storages:
 - name: NtmImageStorage
@@ -121,6 +125,22 @@ storages:
   method: NewSalesConfigStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmSalesReportStorage
+  method: NewSalesReportStorage
+  daemons:
+    - BmMongodbDaemon
+- name: NtmHospitalSalesReportStorage
+  method: NewHospitalSalesReportStorage
+  daemons:
+    - BmMongodbDaemon
+- name: NtmProductSalesReportStorage
+  method: NewProductSalesReportStorage
+  daemons:
+    - BmMongodbDaemon
+- name: NtmRepresentativeSalesReportStorage
+  method: NewRepresentativeSalesReportStorage
+  daemons:
+    - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -207,6 +227,7 @@ resources:
   storages:
   - NtmGoodsConfigStorage
   - NtmProductConfigStorage
+  - NtmProductSalesReportStorage
 - name: NtmBusinessinputResource
   method: NewBusinessinputResource
   storages:
@@ -259,6 +280,33 @@ resources:
   method: NewSalesConfigResource
   storages:
   - NtmSalesConfigStorage
+- name: NtmSalesReportResource
+  method: NewSalesReportResource
+  storages:
+  - NtmSalesReportStorage
+  - NtmHospitalSalesReportStorage
+  - NtmRepresentativeSalesReportStorage
+  - NtmProductSalesReportStorage
+- name: NtmHospitalSalesReportResource
+  method: NewHospitalSalesReportResource
+  storages:
+  - NtmHospitalSalesReportStorage
+  - NtmDestConfigStorage
+  - NtmGoodsConfigStorage
+  - NtmSalesReportStorage
+- name: NtmProductSalesReportResource
+  method: NewProductSalesReportResource
+  storages:
+  - NtmProductSalesReportStorage
+  - NtmGoodsConfigStorage
+  - NtmSalesReportStorage
+- name: NtmRepresentativeSalesReportResource
+  method: NewRepresentativeSalesReportResource
+  storages:
+  - NtmRepresentativeSalesReportStorage
+  - NtmDestConfigStorage
+  - NtmGoodsConfigStorage
+  - NtmSalesReportStorage
 
 services:
 - name: ntm-image
@@ -333,6 +381,18 @@ services:
 - name: ntm-sales-config
   model: NtmSalesConfig
   resource: NtmSalesConfigResource
+- name: ntm-salesreport
+  model: NtmSalesreport
+  resource: NtmSalesReportResource
+- name: ntm-hospitalsalesreport
+  model: NtmHospitalsalesreport
+  resource: NtmHospitalSalesReportResource
+- name: ntm-productsalesreport
+  model: NtmProductsalesreport
+  resource: NtmProductSalesReportResource
+- name: ntm-representativesalesreport
+  model: NtmRepresentativesalesreport
+  resource: NtmRepresentativeSalesReportResource
 
 functions:
 - name: NtmGetUseableProposalsHandler
