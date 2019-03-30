@@ -228,6 +228,9 @@ resources:
   - NtmGoodsConfigStorage
   - NtmProductConfigStorage
   - NtmProductSalesReportStorage
+  - NtmHospitalSalesReportStorage
+  - NtmRepresentativeSalesReportStorage
+  - NtmSalesConfigStorage
 - name: NtmBusinessinputResource
   method: NewBusinessinputResource
   storages:
@@ -257,6 +260,9 @@ resources:
   - NtmDestConfigStorage
   - NtmRegionConfigStorage
   - NtmHospitalConfigStorage
+  - NtmHospitalSalesReportStorage
+  - NtmRepresentativeSalesReportStorage
+  - NtmSalesConfigStorage
 - name: NtmScenarioResource
   method: NewScenarioResource
   storages:
