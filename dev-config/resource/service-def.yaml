@@ -293,6 +293,8 @@ resources:
   - NtmHospitalSalesReportStorage
   - NtmRepresentativeSalesReportStorage
   - NtmProductSalesReportStorage
+  - NtmPaperStorage
+  - NtmSalesConfigStorage
 - name: NtmHospitalSalesReportResource
   method: NewHospitalSalesReportResource
   storages:
@@ -387,17 +389,17 @@ services:
 - name: ntm-sales-config
   model: NtmSalesConfig
   resource: NtmSalesConfigResource
-- name: ntm-salesreport
-  model: NtmSalesreport
+- name: ntm-sales-report
+  model: NtmSalesReport
   resource: NtmSalesReportResource
-- name: ntm-hospitalsalesreport
-  model: NtmHospitalsalesreport
+- name: ntm-hospital-sales-report
+  model: NtmHospitalSalesReport
   resource: NtmHospitalSalesReportResource
-- name: ntm-productsalesreport
+- name: ntm-product-sales-report
   model: NtmProductsalesreport
   resource: NtmProductSalesReportResource
-- name: ntm-representativesalesreport
-  model: NtmRepresentativesalesreport
+- name: ntm-representative-sales-report
+  model: NtmRepresentativeSalesReport
   resource: NtmRepresentativeSalesReportResource
 
 functions:
