@@ -27,6 +27,8 @@ models:
   - NtmHospitalSalesReport
   - NtmProductSalesReport
   - NtmRepresentativeSalesReport
+  - NtmTeamConfig
+  - NtmActionKpi
 
 storages:
 - name: NtmImageStorage
@@ -128,19 +130,27 @@ storages:
 - name: NtmSalesReportStorage
   method: NewSalesReportStorage
   daemons:
-    - BmMongodbDaemon
+  - BmMongodbDaemon
 - name: NtmHospitalSalesReportStorage
   method: NewHospitalSalesReportStorage
   daemons:
-    - BmMongodbDaemon
+  - BmMongodbDaemon
 - name: NtmProductSalesReportStorage
   method: NewProductSalesReportStorage
   daemons:
-    - BmMongodbDaemon
+  - BmMongodbDaemon
 - name: NtmRepresentativeSalesReportStorage
   method: NewRepresentativeSalesReportStorage
   daemons:
-    - BmMongodbDaemon
+  - BmMongodbDaemon
+- name: NtmTeamConfigStorage
+  method: NewTeamConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmActionKpiStorage
+  method: NewActionKpiStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -222,6 +232,7 @@ resources:
   - NtmResourceConfigStorage
   - NtmManagerConfigStorage
   - NtmRepresentativeConfigStorage
+  - NtmTeamConfigStorage
 - name: NtmGoodsConfigResource
   method: NewGoodsConfigResource
   storages:
@@ -315,6 +326,16 @@ resources:
   - NtmDestConfigStorage
   - NtmGoodsConfigStorage
   - NtmSalesReportStorage
+- name: NtmTeamConfigResource
+  method: NewTeamConfigResource
+  storages:
+  - NtmTeamConfigStorage
+  - NtmResourceConfigStorage
+- name: NtmActionKpiResource
+  method: NewActionKpiResource
+  storages:
+  - NtmActionKpiStorage
+#  - NtmRepresentativeConfigStorage
 
 services:
 - name: ntm-image
@@ -396,11 +417,17 @@ services:
   model: NtmHospitalSalesReport
   resource: NtmHospitalSalesReportResource
 - name: ntm-product-sales-report
-  model: NtmProductsalesreport
+  model: NtmProductSalesReport
   resource: NtmProductSalesReportResource
 - name: ntm-representative-sales-report
   model: NtmRepresentativeSalesReport
   resource: NtmRepresentativeSalesReportResource
+- name: ntm-team-config
+  model: NtmTeamConfig
+  resource: NtmTeamConfigResource
+- name: ntm-action-kpi
+  model: NtmActionKpi
+  resource: NtmActionKpiResource
 
 functions:
 - name: NtmGetUseableProposalsHandler
