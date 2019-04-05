@@ -29,6 +29,8 @@ models:
   - NtmRepresentativeSalesReport
   - NtmTeamConfig
   - NtmActionKpi
+  - NtmPersonnelAssessment
+  - NtmRepresentativeAbility
 
 storages:
 - name: NtmImageStorage
@@ -151,6 +153,14 @@ storages:
   method: NewActionKpiStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmPersonnelAssessmentStorage
+  method: NewPersonnelAssessmentStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRepresentativeAbilityStorage
+  method: NewRepresentativeAbilityStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -195,6 +205,8 @@ resources:
   - NtmRepresentativeStorage
   - NtmImageStorage
   - NtmRepresentativeConfigStorage
+  - NtmActionKpiStorage
+  - NtmRepresentativeAbilityStorage
 - name: NtmManagerConfigResource
   method: NewManagerConfigResource
   storages:
@@ -235,6 +247,7 @@ resources:
   - NtmTeamConfigStorage
   - NtmRepresentativeinputStorage
   - NtmBusinessinputStorage
+  - NtmRepresentativeSalesReportStorage
 - name: NtmGoodsConfigResource
   method: NewGoodsConfigResource
   storages:
@@ -272,10 +285,7 @@ resources:
   method: NewDestConfigResource
   storages:
   - NtmDestConfigStorage
-  - NtmRegionConfigStorage
-  - NtmHospitalConfigStorage
   - NtmHospitalSalesReportStorage
-  - NtmRepresentativeSalesReportStorage
   - NtmSalesConfigStorage
   - NtmBusinessinputStorage
 - name: NtmScenarioResource
@@ -314,32 +324,37 @@ resources:
   method: NewHospitalSalesReportResource
   storages:
   - NtmHospitalSalesReportStorage
-  - NtmDestConfigStorage
-  - NtmGoodsConfigStorage
   - NtmSalesReportStorage
 - name: NtmProductSalesReportResource
   method: NewProductSalesReportResource
   storages:
   - NtmProductSalesReportStorage
-  - NtmGoodsConfigStorage
   - NtmSalesReportStorage
 - name: NtmRepresentativeSalesReportResource
   method: NewRepresentativeSalesReportResource
   storages:
   - NtmRepresentativeSalesReportStorage
-  - NtmDestConfigStorage
-  - NtmGoodsConfigStorage
   - NtmSalesReportStorage
 - name: NtmTeamConfigResource
   method: NewTeamConfigResource
   storages:
   - NtmTeamConfigStorage
   - NtmResourceConfigStorage
+- name: NtmPersonnelAssessmentResource
+  method: NewPersonnelAssessmentResource
+  storages:
+  - NtmPersonnelAssessmentStorage
+  - NtmPaperStorage
+- name: NtmRepresentativeAbilityResource
+  method: NewRepresentativeAbilityResource
+  storages:
+  - NtmRepresentativeAbilityStorage
+  - NtmPersonnelAssessmentStorage
 - name: NtmActionKpiResource
   method: NewActionKpiResource
   storages:
   - NtmActionKpiStorage
-#  - NtmRepresentativeConfigStorage
+  - NtmPersonnelAssessmentStorage
 
 services:
 - name: ntm-image
@@ -432,6 +447,12 @@ services:
 - name: ntm-action-kpi
   model: NtmActionKpi
   resource: NtmActionKpiResource
+- name: ntm-representative-ability
+  model: NtmRepresentativeAbility
+  resource: NtmRepresentativeAbilityResource
+- name: ntm-personnel-assessment
+  model: NtmPersonnelAssessment
+  resource: NtmPersonnelAssessmentResource
 
 functions:
 - name: NtmGetUseableProposalsHandler
