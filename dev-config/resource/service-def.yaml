@@ -285,6 +285,8 @@ resources:
   method: NewDestConfigResource
   storages:
   - NtmDestConfigStorage
+  - NtmHospitalConfigStorage
+  - NtmRegionConfigStorage
   - NtmHospitalSalesReportStorage
   - NtmSalesConfigStorage
   - NtmBusinessinputStorage
@@ -307,10 +309,7 @@ resources:
   storages:
   - NtmPaperStorage
   - NtmPaperinputStorage
-- name: NtmSalesConfigResource
-  method: NewSalesConfigResource
-  storages:
-  - NtmSalesConfigStorage
+
 - name: NtmSalesReportResource
   method: NewSalesReportResource
   storages:
@@ -320,6 +319,13 @@ resources:
   - NtmProductSalesReportStorage
   - NtmPaperStorage
   - NtmSalesConfigStorage
+- name: NtmSalesConfigResource
+  method: NewSalesConfigResource
+  storages:
+  - NtmSalesConfigStorage
+  - NtmPaperStorage
+  friendly:
+  - NtmSalesReportResource
 - name: NtmHospitalSalesReportResource
   method: NewHospitalSalesReportResource
   storages:
@@ -542,8 +548,8 @@ daemons:
     args:
       host: 123.56.179.133
       port: 5555
-      #    host: 127.0.0.1
-      #    port: 27017
+#      host: 127.0.0.1
+#      port: 27017
       database: pharbers-ntm-client
   - name: BmRedisDaemon
     method: NewRedisDBDaemon
