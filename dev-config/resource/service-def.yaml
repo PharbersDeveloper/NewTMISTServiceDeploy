@@ -294,6 +294,9 @@ resources:
   method: NewScenarioResource
   storages:
   - NtmScenarioStorage
+  - NtmProposalStorage
+  - NtmPaperStorage
+  - NtmPaperinputStorage
 - name: NtmProposalResource
   method: NewProposalResource
   storages:
