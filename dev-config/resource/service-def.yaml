@@ -312,6 +312,8 @@ resources:
   storages:
   - NtmPaperStorage
   - NtmPaperinputStorage
+  - NtmSalesReportStorage
+  - NtmPersonnelAssessmentStorage
 
 - name: NtmSalesReportResource
   method: NewSalesReportResource
@@ -522,6 +524,16 @@ functions:
   http: POST
   args:
   - name
+- name: RefreshTokenHandler
+  create: NewRefreshTokenHandler
+  daemons:
+  - BmMongodbDaemon
+  - BmRedisDaemon
+  - AuthClientDaemon
+  method: RefreshAccessToken
+  http: GET
+  args:
+  - name
 - name: NtmCallRHandler
   create: NewCallRHandler
   daemons:
@@ -539,8 +551,8 @@ middlewares:
   daemons:
   - BmRedisDaemon
   args:
-  - 123.56.179.133:90
-
+#  - 123.56.179.133:90
+    - 192.168.100.116:9096
 panic:
   name: NtmCommonPanicHandle
   create: NewCommonPanicHandle
@@ -549,20 +561,24 @@ daemons:
   - name: BmMongodbDaemon
     method: NewMongoDBDaemon
     args:
-      host: 123.56.179.133
-      port: 5555
-#      host: 127.0.0.1
-#      port: 27017
+#      host: 123.56.179.133
+#      port: 5555
+      host: 127.0.0.1
+      port: 27017
       database: pharbers-ntm-client
   - name: BmRedisDaemon
     method: NewRedisDBDaemon
     args:
-      host: 123.56.179.133
-      port: 6378
+#      host: 123.56.179.133
+#      port: 6378
+      host: 127.0.0.1
+      port: 6379
       password:
       database: 0
   - name: AuthClientDaemon
     method: NewAuthClientDaemon
     args:
-      auth_url: http://123.56.179.133:90/v0/Authorize
-      token_url: http://123.56.179.133:90/v0/Token
+#      auth_url: http://123.56.179.133:90/v0/Authorize
+      auth_url: http://192.168.100.116:9096/v0/Authorize
+#      token_url: http://123.56.179.133:90/v0/Token
+      token_url: http://192.168.100.116:9096/v0/Token
