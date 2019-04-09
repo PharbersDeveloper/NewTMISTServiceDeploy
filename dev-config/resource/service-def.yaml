@@ -281,6 +281,7 @@ resources:
   - NtmRepresentativeinputStorage
   - NtmManagerinputStorage
   - NtmPaperStorage
+  - NtmScenarioStorage
 - name: NtmDestConfigResource
   method: NewDestConfigResource
   storages:
@@ -297,6 +298,7 @@ resources:
   - NtmProposalStorage
   - NtmPaperStorage
   - NtmPaperinputStorage
+  - NtmPersonnelAssessmentStorage
 - name: NtmProposalResource
   method: NewProposalResource
   storages:
