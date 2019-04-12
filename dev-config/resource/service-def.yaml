@@ -491,17 +491,16 @@ functions:
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  - AuthClientDaemon
   method: GenerateUserAgent
   http: GET
   args:
-  - name
+#  - 123.56.179.133:90
+  - 192.168.100.116:9096
 - name: NtmAuthUserAgentHandler
   create: NewUserAgentHandler
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  - AuthClientDaemon
   method: AuthUserAgent
   http: GET
   args:
@@ -511,31 +510,31 @@ functions:
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  - AuthClientDaemon
   method: GenerateAccessToken
   http: GET
   args:
-  - name
+#  - 123.56.179.133:90
+  - 192.168.100.116:9096
 - name: PasswordAuthHandler
   create: NewAuthHandler
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  - AuthClientDaemon
   method: PasswordLogin
   http: POST
   args:
-  - name
-- name: RefreshTokenHandler
-  create: NewRefreshTokenHandler
+#  - 123.56.179.133:90
+  - 192.168.100.116:9096
+- name: RefreshAuthHandler
+  create: NewAuthHandler
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
-  - AuthClientDaemon
   method: RefreshAccessToken
   http: GET
   args:
-  - name
+#  - 123.56.179.133:90
+  - 192.168.100.116:9096
 - name: NtmCallRHandler
   create: NewCallRHandler
   daemons:
@@ -577,10 +576,3 @@ daemons:
       port: 6379
       password:
       database: 0
-  - name: AuthClientDaemon
-    method: NewAuthClientDaemon
-    args:
-#      auth_url: http://123.56.179.133:90/v0/Authorize
-      auth_url: http://192.168.100.116:9096/v0/Authorize
-#      token_url: http://123.56.179.133:90/v0/Token
-      token_url: http://192.168.100.116:9096/v0/Token
