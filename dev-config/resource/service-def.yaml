@@ -299,6 +299,7 @@ resources:
   - NtmPaperStorage
   - NtmPaperinputStorage
   - NtmPersonnelAssessmentStorage
+  - NtmSalesReportStorage
 - name: NtmProposalResource
   method: NewProposalResource
   storages:
@@ -326,6 +327,7 @@ resources:
   - NtmProductSalesReportStorage
   - NtmPaperStorage
   - NtmSalesConfigStorage
+  - NtmScenarioStorage
 - name: NtmSalesConfigResource
   method: NewSalesConfigResource
   storages:
