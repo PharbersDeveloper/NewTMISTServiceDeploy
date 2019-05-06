@@ -496,8 +496,7 @@ functions:
   method: GenerateUserAgent
   http: GET
   args:
-#  - 123.56.179.133:90
-  - 192.168.100.116:9096
+  - oauth.pharbers.com
 - name: NtmAuthUserAgentHandler
   create: NewUserAgentHandler
   daemons:
@@ -515,8 +514,7 @@ functions:
   method: GenerateAccessToken
   http: GET
   args:
-#  - 123.56.179.133:90
-  - 192.168.100.116:9096
+  - oauth.pharbers.com
 - name: PasswordAuthHandler
   create: NewAuthHandler
   daemons:
@@ -525,8 +523,7 @@ functions:
   method: PasswordLogin
   http: POST
   args:
-#  - 123.56.179.133:90
-  - 192.168.100.116:9096
+  - oauth.pharbers.com
 - name: RefreshAuthHandler
   create: NewAuthHandler
   daemons:
@@ -535,8 +532,7 @@ functions:
   method: RefreshAccessToken
   http: GET
   args:
-#  - 123.56.179.133:90
-  - 192.168.100.116:9096
+  - oauth.pharbers.com
 - name: NtmCallRHandler
   create: NewCallRHandler
   daemons:
@@ -545,8 +541,8 @@ functions:
   method: CallRCalculate
   http: POST
   args:
-  - localhost:8001
-  - stp_handler
+  - 127.0.0.1:8000
+  - ntm
 
 middlewares:
 - name: NtmCheckTokenMiddleware
@@ -554,8 +550,7 @@ middlewares:
   daemons:
   - BmRedisDaemon
   args:
-#  - 123.56.179.133:90
-    - 192.168.100.116:9096
+  - oauth.pharbers.com
 panic:
   name: NtmCommonPanicHandle
   create: NewCommonPanicHandle
