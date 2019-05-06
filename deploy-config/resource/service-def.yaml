@@ -317,7 +317,6 @@ resources:
   - NtmPaperinputStorage
   - NtmSalesReportStorage
   - NtmPersonnelAssessmentStorage
-
 - name: NtmSalesReportResource
   method: NewSalesReportResource
   storages:
@@ -470,15 +469,6 @@ services:
   resource: NtmPersonnelAssessmentResource
 
 functions:
-- name: NtmGetUseableProposalsHandler
-  create: NewGetUseableProposalsHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: GetUseableProposals
-  http: POST
-  args:
-  - useableProposals
 - name: NtmGeneratePaperHandler
   create: NewGeneratePaperHandler
   daemons:
@@ -488,51 +478,6 @@ functions:
   http: POST
   args:
   - papers
-- name: NtmUserAgentHandler
-  create: NewUserAgentHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: GenerateUserAgent
-  http: GET
-  args:
-  - oauth.pharbers.com
-- name: NtmAuthUserAgentHandler
-  create: NewUserAgentHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: AuthUserAgent
-  http: GET
-  args:
-  - static/Auth.html
-- name: AuthHandler
-  create: NewAuthHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: GenerateAccessToken
-  http: GET
-  args:
-  - oauth.pharbers.com
-- name: PasswordAuthHandler
-  create: NewAuthHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: PasswordLogin
-  http: POST
-  args:
-  - oauth.pharbers.com
-- name: RefreshAuthHandler
-  create: NewAuthHandler
-  daemons:
-  - BmMongodbDaemon
-  - BmRedisDaemon
-  method: RefreshAccessToken
-  http: GET
-  args:
-  - oauth.pharbers.com
 - name: NtmCallRHandler
   create: NewCallRHandler
   daemons:
@@ -541,7 +486,8 @@ functions:
   method: CallRCalculate
   http: POST
   args:
-  - 127.0.0.1:8000
+#  - 127.0.0.1:8000
+  - ntm_r_calc:8000
   - ntm
 
 middlewares:
@@ -559,17 +505,17 @@ daemons:
   - name: BmMongodbDaemon
     method: NewMongoDBDaemon
     args:
-#      host: 123.56.179.133
-#      port: 5555
-      host: 127.0.0.1
-      port: 27017
+      host: 123.56.179.133
+      port: 5555
+      # host: 127.0.0.1
+      # port: 27017
       database: pharbers-ntm-client
   - name: BmRedisDaemon
     method: NewRedisDBDaemon
     args:
-#      host: 123.56.179.133
-#      port: 6378
-      host: 127.0.0.1
-      port: 6379
+      host: 123.56.179.133
+      port: 6378
+      # host: 127.0.0.1
+      # port: 6379
       password:
       database: 0
