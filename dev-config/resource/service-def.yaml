@@ -248,6 +248,7 @@ resources:
   - NtmRepresentativeinputStorage
   - NtmBusinessinputStorage
   - NtmRepresentativeSalesReportStorage
+  - NtmHospitalSalesReportStorage
 - name: NtmGoodsConfigResource
   method: NewGoodsConfigResource
   storages:
