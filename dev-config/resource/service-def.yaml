@@ -496,7 +496,8 @@ middlewares:
   daemons:
   - BmRedisDaemon
   args:
-  - oauth.pharbers.com
+#  - oauth.pharbers.com
+  - 192.168.100.174:9096
 panic:
   name: NtmCommonPanicHandle
   create: NewCommonPanicHandle
