@@ -487,7 +487,8 @@ functions:
   method: CallRCalculate
   http: POST
   args:
-  - 127.0.0.1:8000
+#  - 127.0.0.1:8000
+  - ntm_r_calc
   - ntm
 
 middlewares:
