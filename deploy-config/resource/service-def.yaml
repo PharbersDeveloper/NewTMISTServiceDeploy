@@ -327,6 +327,7 @@ resources:
   - NtmPaperStorage
   - NtmSalesConfigStorage
   - NtmScenarioStorage
+  - NtmProposalStorage
 - name: NtmSalesConfigResource
   method: NewSalesConfigResource
   storages:
