@@ -31,6 +31,15 @@ models:
   - NtmActionKpi
   - NtmPersonnelAssessment
   - NtmRepresentativeAbility
+  - NtmLevel
+  - NtmLevelConfig
+  - NtmAssessmentReportDescribe
+  - NtmRegionalDivisionResult
+  - NtmTargetAssignsResult
+  - NtmResourceAssignsResult
+  - NtmManageTimeResult
+  - NtmManageTeamResult
+  - NtmAssessmentReport
 
 storages:
 - name: NtmImageStorage
@@ -161,6 +170,42 @@ storages:
   method: NewRepresentativeAbilityStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmLevelStorage
+  method: NewLevelStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmLevelConfigStorage
+  method: NewLevelConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmAssessmentReportDescribeStorage
+  method: NewAssessmentReportDescribeStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRegionalDivisionResultStorage
+  method: NewRegionalDivisionResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmTargetAssignsResultStorage
+  method: NewTargetAssignsResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmResourceAssignsResultStorage
+  method: NewResourceAssignsResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManageTimeResultStorage
+  method: NewManageTimeResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManageTeamResultStorage
+  method: NewManageTeamResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmAssessmentReportStorage
+  method: NewAssessmentReportStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -248,6 +293,7 @@ resources:
   - NtmRepresentativeinputStorage
   - NtmBusinessinputStorage
   - NtmRepresentativeSalesReportStorage
+  - NtmHospitalSalesReportStorage
 - name: NtmGoodsConfigResource
   method: NewGoodsConfigResource
   storages:
@@ -370,6 +416,69 @@ resources:
   storages:
   - NtmActionKpiStorage
   - NtmPersonnelAssessmentStorage
+- name: NtmLevelResource
+  method: NewLevelResource
+  storages:
+  - NtmLevelStorage
+  - NtmLevelConfigStorage
+- name: NtmLevelConfigResource
+  method: NewLevelConfigResource
+  storages:
+  - NtmLevelConfigStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+- name: NtmAssessmentReportDescribeResource
+  method: NewAssessmentReportDescribeResource
+  storages:
+  - NtmAssessmentReportDescribeStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+- name: NtmRegionalDivisionResultResource
+  method: NewRegionalDivisionResultResource
+  storages:
+  - NtmRegionalDivisionResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmTargetAssignsResultResource
+  method: NewTargetAssignsResultResource
+  storages:
+  - NtmTargetAssignsResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmResourceAssignsResultResource
+  method: NewResourceAssignsResultResource
+  storages:
+  - NtmResourceAssignsResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmManageTimeResultResource
+  method: NewManageTimeResultResource
+  storages:
+  - NtmManageTimeResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmManageTeamResultResource
+  method: NewManageTeamResultResource
+  storages:
+  - NtmManageTeamResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmAssessmentReportResource
+  method: NewAssessmentReportResource
+  storages:
+  - NtmAssessmentReportStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+  - NtmPaperStorage
+
+
+
+
+
 
 services:
 - name: ntm-image
@@ -468,6 +577,37 @@ services:
 - name: ntm-personnel-assessment
   model: NtmPersonnelAssessment
   resource: NtmPersonnelAssessmentResource
+- name: ntm-level
+  model: NtmLevel
+  resource: NtmLevelResource
+- name: ntm-level-config
+  model: NtmLevelConfig
+  resource: NtmLevelConfigResource
+- name: ntm-assessment-report-describe
+  model: NtmAssessmentReportDescribe
+  resource: NtmAssessmentReportDescribeResource
+- name: ntm-regional-division-result
+  model: NtmRegionalDivisionResult
+  resource: NtmRegionalDivisionResultResource
+- name: ntm-target-assigns-result
+  model: NtmTargetAssignsResult
+  resource: NtmTargetAssignsResultResource
+- name: ntm-resource-assigns-result
+  model: NtmResourceAssignsResult
+  resource: NtmResourceAssignsResultResource
+- name: ntm-manage-time-result
+  model: NtmManageTimeResult
+  resource: NtmManageTimeResultResource
+- name: ntm-manage-team-result
+  model: NtmManageTeamResult
+  resource: NtmManageTeamResultResource
+- name: ntm-assessment-report
+  model: NtmAssessmentReport
+  resource: NtmAssessmentReportResource
+
+
+
+
 
 functions:
 - name: NtmGeneratePaperHandler
@@ -487,7 +627,9 @@ functions:
   method: CallRCalculate
   http: POST
   args:
+#  - docker.for.mac.host.internal:8000
   - ntm_r_calc:8000
+#  - 127.0.0.1:8000
   - ntm
 
 middlewares:
@@ -497,6 +639,7 @@ middlewares:
   - BmRedisDaemon
   args:
   - oauth.pharbers.com
+  # - 192.168.100.174:9096
 panic:
   name: NtmCommonPanicHandle
   create: NewCommonPanicHandle
@@ -507,15 +650,15 @@ daemons:
     args:
       host: 123.56.179.133
       port: 5555
-#      host: 127.0.0.1
-#      port: 27017
+      # host: 127.0.0.1
+      # port: 27017
       database: pharbers-ntm-client
   - name: BmRedisDaemon
     method: NewRedisDBDaemon
     args:
       host: 123.56.179.133
       port: 6378
-#      host: 127.0.0.1
-#      port: 6379
+      # host: 127.0.0.1
+      # port: 6379
       password:
       database: 0

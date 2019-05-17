@@ -31,6 +31,15 @@ models:
   - NtmActionKpi
   - NtmPersonnelAssessment
   - NtmRepresentativeAbility
+  - NtmLevel
+  - NtmLevelConfig
+  - NtmAssessmentReportDescribe
+  - NtmRegionalDivisionResult
+  - NtmTargetAssignsResult
+  - NtmResourceAssignsResult
+  - NtmManageTimeResult
+  - NtmManageTeamResult
+  - NtmAssessmentReport
 
 storages:
 - name: NtmImageStorage
@@ -159,6 +168,42 @@ storages:
   - BmMongodbDaemon
 - name: NtmRepresentativeAbilityStorage
   method: NewRepresentativeAbilityStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmLevelStorage
+  method: NewLevelStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmLevelConfigStorage
+  method: NewLevelConfigStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmAssessmentReportDescribeStorage
+  method: NewAssessmentReportDescribeStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmRegionalDivisionResultStorage
+  method: NewRegionalDivisionResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmTargetAssignsResultStorage
+  method: NewTargetAssignsResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmResourceAssignsResultStorage
+  method: NewResourceAssignsResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManageTimeResultStorage
+  method: NewManageTimeResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmManageTeamResultStorage
+  method: NewManageTeamResultStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmAssessmentReportStorage
+  method: NewAssessmentReportStorage
   daemons:
   - BmMongodbDaemon
 
@@ -328,6 +373,7 @@ resources:
   - NtmPaperStorage
   - NtmSalesConfigStorage
   - NtmScenarioStorage
+  - NtmProposalStorage
 - name: NtmSalesConfigResource
   method: NewSalesConfigResource
   storages:
@@ -370,6 +416,69 @@ resources:
   storages:
   - NtmActionKpiStorage
   - NtmPersonnelAssessmentStorage
+- name: NtmLevelResource
+  method: NewLevelResource
+  storages:
+  - NtmLevelStorage
+  - NtmLevelConfigStorage
+- name: NtmLevelConfigResource
+  method: NewLevelConfigResource
+  storages:
+  - NtmLevelConfigStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+- name: NtmAssessmentReportDescribeResource
+  method: NewAssessmentReportDescribeResource
+  storages:
+  - NtmAssessmentReportDescribeStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+- name: NtmRegionalDivisionResultResource
+  method: NewRegionalDivisionResultResource
+  storages:
+  - NtmRegionalDivisionResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmTargetAssignsResultResource
+  method: NewTargetAssignsResultResource
+  storages:
+  - NtmTargetAssignsResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmResourceAssignsResultResource
+  method: NewResourceAssignsResultResource
+  storages:
+  - NtmResourceAssignsResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmManageTimeResultResource
+  method: NewManageTimeResultResource
+  storages:
+  - NtmManageTimeResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmManageTeamResultResource
+  method: NewManageTeamResultResource
+  storages:
+  - NtmManageTeamResultStorage
+  - NtmAssessmentReportStorage
+- name: NtmAssessmentReportResource
+  method: NewAssessmentReportResource
+  storages:
+  - NtmAssessmentReportStorage
+  - NtmRegionalDivisionResultStorage
+  - NtmTargetAssignsResultStorage
+  - NtmResourceAssignsResultStorage
+  - NtmManageTimeResultStorage
+  - NtmManageTeamResultStorage
+  - NtmPaperStorage
+
+
+
+
+
 
 services:
 - name: ntm-image
@@ -468,6 +577,37 @@ services:
 - name: ntm-personnel-assessment
   model: NtmPersonnelAssessment
   resource: NtmPersonnelAssessmentResource
+- name: ntm-level
+  model: NtmLevel
+  resource: NtmLevelResource
+- name: ntm-level-config
+  model: NtmLevelConfig
+  resource: NtmLevelConfigResource
+- name: ntm-assessment-report-describe
+  model: NtmAssessmentReportDescribe
+  resource: NtmAssessmentReportDescribeResource
+- name: ntm-regional-division-result
+  model: NtmRegionalDivisionResult
+  resource: NtmRegionalDivisionResultResource
+- name: ntm-target-assigns-result
+  model: NtmTargetAssignsResult
+  resource: NtmTargetAssignsResultResource
+- name: ntm-resource-assigns-result
+  model: NtmResourceAssignsResult
+  resource: NtmResourceAssignsResultResource
+- name: ntm-manage-time-result
+  model: NtmManageTimeResult
+  resource: NtmManageTimeResultResource
+- name: ntm-manage-team-result
+  model: NtmManageTeamResult
+  resource: NtmManageTeamResultResource
+- name: ntm-assessment-report
+  model: NtmAssessmentReport
+  resource: NtmAssessmentReportResource
+
+
+
+
 
 functions:
 - name: NtmGeneratePaperHandler
@@ -487,7 +627,8 @@ functions:
   method: CallRCalculate
   http: POST
   args:
-  - docker.for.mac.host.internal:8000
+#  - docker.for.mac.host.internal:8000
+  - 127.0.0.1:8000
   - ntm
 
 middlewares:
