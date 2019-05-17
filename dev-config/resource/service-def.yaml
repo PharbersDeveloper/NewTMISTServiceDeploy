@@ -40,6 +40,8 @@ models:
   - NtmManageTimeResult
   - NtmManageTeamResult
   - NtmAssessmentReport
+  - NtmTitle
+  - NtmGeneralPerformanceResult
 
 storages:
 - name: NtmImageStorage
@@ -206,6 +208,14 @@ storages:
   method: NewAssessmentReportStorage
   daemons:
   - BmMongodbDaemon
+- name: NtmTitleStorage
+  method: NewTitleStorage
+  daemons:
+  - BmMongodbDaemon
+- name: NtmGeneralPerformanceResultStorage
+  method: NewGeneralPerformanceResultStorage
+  daemons:
+  - BmMongodbDaemon
 
 resources:
 - name: NtmImageResource
@@ -216,6 +226,8 @@ resources:
   - NtmHospitalStorage
   - NtmRegionStorage
   - NtmRepresentativeStorage
+  - NtmLevelStorage
+  - NtmTitleStorage
 - name: NtmPolicyResource
   method: NewPolicyResource
   storages:
@@ -430,6 +442,7 @@ resources:
   - NtmResourceAssignsResultStorage
   - NtmManageTimeResultStorage
   - NtmManageTeamResultStorage
+  - NtmGeneralPerformanceResultStorage
 - name: NtmAssessmentReportDescribeResource
   method: NewAssessmentReportDescribeResource
   storages:
@@ -474,7 +487,16 @@ resources:
   - NtmManageTimeResultStorage
   - NtmManageTeamResultStorage
   - NtmPaperStorage
-
+- name: NtmTitleResource
+  method: NewTitleResource
+  storages:
+  - NtmTitleStorage
+  - NtmLevelConfigStorage
+- name: NtmGeneralPerformanceResultResource
+  method: NewGeneralPerformanceResultResource
+  storages:
+  - NtmGeneralPerformanceResultStorage
+  - NtmAssessmentReportStorage
 
 
 
@@ -604,6 +626,12 @@ services:
 - name: ntm-assessment-report
   model: NtmAssessmentReport
   resource: NtmAssessmentReportResource
+- name: ntm-title
+  model: NtmTitle
+  resource: NtmTitleResource
+- name: ntm-general-performance-result
+  model: NtmGeneralPerformanceResult
+  resource: NtmGeneralPerformanceResultResource
 
 
 
