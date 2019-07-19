@@ -1,0 +1,11 @@
+{
+  "Host":"123.56.179.133",
+  "HostName":"max.logic",
+  "Port":"5222",
+  "LoginUser":"tm",
+  "LoginUserPwd":"tm",
+  "ReportUser":"driver",
+  "ReportUserPwd":"driver",
+  "ListenUser":"driver",
+  "ListenUserPwd":"driver"
+}

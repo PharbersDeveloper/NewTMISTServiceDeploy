@@ -498,10 +498,6 @@ resources:
   - NtmGeneralPerformanceResultStorage
   - NtmAssessmentReportStorage
 
-
-
-
-
 services:
 - name: ntm-image
   model: NtmImage
@@ -633,10 +629,6 @@ services:
   model: NtmGeneralPerformanceResult
   resource: NtmGeneralPerformanceResultResource
 
-
-
-
-
 functions:
 - name: NtmGeneratePaperHandler
   create: NewGeneratePaperHandler
@@ -652,12 +644,11 @@ functions:
   daemons:
   - BmMongodbDaemon
   - BmRedisDaemon
+  - NtmXmppDaemon
   method: CallRCalculate
   http: POST
   args:
-#  - docker.for.mac.host.internal:8000
-  - ntm_r_calc:8000
-  - ntm
+  - 5cbd9f94f4ce4352ecb082a0@conference.max.logic
 
 middlewares:
 - name: NtmCheckTokenMiddleware
@@ -666,6 +657,7 @@ middlewares:
   - BmRedisDaemon
   args:
   - oauth.pharbers.com
+
 panic:
   name: NtmCommonPanicHandle
   create: NewCommonPanicHandle
@@ -676,13 +668,14 @@ daemons:
     args:
       host: primary
       port: 27017
-      user: pharbers
-      pass: pharbers2019
       database: pharbers-ntm-client
   - name: BmRedisDaemon
     method: NewRedisDBDaemon
     args:
       host: redis
       port: 6379
-      password: pharbers
+      password:
       database: 0
+  - name: NtmXmppDaemon
+    method: NewNtmXmppBDaemon
+    args:
